@@ -72,6 +72,6 @@ async def post(post_id):
 #     return Response(resp.text, mimetype="text/html")
 
 
-if __name__ == "__main__":
-    app.run()
+def create_app():
+   return app
 
