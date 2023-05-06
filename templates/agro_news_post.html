@@ -1,0 +1,28 @@
+{% extends 'agro_news_base.html' %}
+
+{% block title %}
+AgroNews - {{ postTitle}}
+{% endblock title %}
+
+{% block content %}
+<nav class="navbar navbar-light bg-light mb-2">
+    <a class="navbar-brand" href="#">
+      <img src="https://aztester.uz/agro-news/assets/images/services/agronews-logo.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+      AgroNews
+    </a>
+  </nav>
+
+  <div class="card p-3" >
+    <img class="card-img-top" src="{{ postImage}}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{ postTitle }}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{ postDescription}}</h6>
+    </div>
+    <div class="card-body">
+        {{ postText|safe }}
+      </div>
+    <div class="card-body">
+      <a href="{{ url_for('index') }}" class="card-link">All news</a>
+    </div>
+  </div>
+{% endblock content %}
