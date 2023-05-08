@@ -52,7 +52,7 @@ async def post(post_id):
 
 @app.route("/create-post")
 async def create_post():
-    return render_template("uzimizniki_create_post.html")
+    return render_template("uzimizniki_create_post.html", title="Create Post")
 
 def create_app():
    return app
