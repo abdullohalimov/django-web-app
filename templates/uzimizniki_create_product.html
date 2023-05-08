@@ -37,10 +37,15 @@ O'zimizniki - Post qo'shish
 </form>
 
 <select id='mySelect' class="form-select" size="3" aria-label="size 3 select example">
-  <option selected>Open this select menu</option>
-  <option value="1">One</option>
-  <option value="2">Two</option>
-  <option value="3">Three</option>
+  {% for category in categories %}
+  <option value="{{ category.id  }}">{{ category.name }}</option>
+  {% endfor %}
+</select>
+
+<select id='mySelect2' class="form-select" size="3" aria-label="size 3 select example" style="display: none;">
+  {% for category in categories %}
+  <option value="{{ category.id  }}">{{ category.name }}</option>
+  {% endfor %}
 </select>
 
 
@@ -50,51 +55,20 @@ O'zimizniki - Post qo'shish
 
       // Get the select element by its id
     var mySelect = document.getElementById("mySelect");
+    var mySelect2 = document.getElementById("mySelect2");
 
     // Add an event listener to handle the change event
     mySelect.addEventListener("change", function() {
       // Get the value of the selected option
       var selectedValue = mySelect.value;
-
-      // Perform some action based on the selected value
-      if (selectedValue == "1") {
-        alert("You chose one");
-      } else if (selectedValue == "2") {
-        alert("You chose two");
-      } else if (selectedValue == "3") {
-        alert("You chose three");
-      }
+      mySelect2.style.display = "block";
     });
 
-
-    // Define the URL of the API endpoint
-    const url = "https://jsonplaceholder.typicode.com/posts/1";
-    function get_pod_categories() {
-      // Use fetch to send a GET request
-      fetch(url)
-      // Handle the response
-      .then((response) => {
-      // Check if the request was successful
-      if (response.ok) {
-        // Convert the response to JSON
-        return response.json();
-      } else {
-        // Throw an error if the status code is not 200
-        throw new Error(`HTTP error: ${response.status}`);
-      }
-      })
-      // Handle the JSON data
-      .then((data) => {
-        // Do something with the data
-        console.log(data);
-      })
-      // Handle any errors
-      .catch((error) => {
-        // Do something with the error
-        console.error(error);
-      });
+    function somen(datta){
+      console.log(datta)
     }
 
-  
   </script>
+
+
 {% endblock %}
