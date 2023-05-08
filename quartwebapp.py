@@ -15,9 +15,7 @@ def datetime_convert(date):
 
     return human_readable_date
 
-
 @app.route("/news")
-
 async def index():
 
     async with aiohttp.ClientSession() as session:
@@ -38,15 +36,7 @@ async def index():
 
     return render_template("agro_news_index.html", posts=posts)
 
-# @app.route("/post/<post_id>")
-
-# async def post_redirect(post_id):
-
-#     redirect(url_for('post', post_id=post_id))
-
-
 @app.route('/post/<post_id>')
-
 async def post(post_id):
 
     async with aiohttp.ClientSession() as session:
@@ -60,17 +50,9 @@ async def post(post_id):
 
     return render_template("agro_news_post.html", postTitle=resp['name'], postImage=resp['photo'], postDescription=resp['description'], postText=resp['content'])
 
-
-# @app.route("/api")
-
-# async def json():
-
-#     resp = await requests_html.AsyncHTMLSession().get("https://aztester.uz/agro-news/uz_cyrl/home")
-
-#     await resp.html.arender()
-
-#     return Response(resp.text, mimetype="text/html")
-
+@app.route("/create-post")
+async def create_post():
+    return render_template("uzimizniki_create_post.html")
 
 def create_app():
    return app
